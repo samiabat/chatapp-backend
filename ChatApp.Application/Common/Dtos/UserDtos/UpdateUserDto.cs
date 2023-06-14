@@ -1,16 +1,17 @@
-﻿using ChatApp.Domain.Common;
+﻿using ChatApp.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatApp.Domain.Models{
-    public class User: BaseEntity
+namespace ChatApp.Application.Common.Dtos.UserDtos
+{
+    public class UpdateUserDto
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public ICollection<Conversation> Conversations { get; set; }
+        public ICollection<Conversation>? Conversation { get; set; }
     }
 }

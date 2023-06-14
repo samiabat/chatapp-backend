@@ -1,14 +1,15 @@
-﻿using ChatApp.Domain.Common;
+﻿using ChatApp.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatApp.Domain.Models
+namespace ChatApp.Application.Common.Dtos.ConversationDtos
 {
-    public class Conversation: BaseEntity
+    public class ConversationDto
     {
+        public int Id { get; set; }
         public int SenderId { get; set; }
         public int ReceiverId { get; set; }
         // public User Sender { get; set; }

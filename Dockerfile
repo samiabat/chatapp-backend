@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["ChatApp.WebApi/ChatApp.WebApi.csproj", "ChatApp.WebApi/"]
-# COPY ["ChatApp.Application/ChatApp.Application.csproj", "ChatApp.Application/"]
+COPY ["ChatApp.Application/ChatApp.Application.csproj", "ChatApp.Application/"]
 COPY ["ChatApp.Domain/ChatApp.Domain.csproj", "ChatApp.Domain/"]
 # COPY ["ChatApp.Persistence/ChatApp.Persistence.csproj", "ChatApp.Persistence/"]
 RUN dotnet restore "ChatApp.WebApi/ChatApp.WebApi.csproj"

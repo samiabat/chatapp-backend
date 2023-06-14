@@ -11,6 +11,6 @@ namespace ChatApp.Domain.Models{
         public int UserId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public ICollection<Conversation> Conversations { get; set; }
+        public ICollection<Conversation>? Conversations { get; set; }
     }
 }

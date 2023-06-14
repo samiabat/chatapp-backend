@@ -38,7 +38,7 @@ namespace ChatApp.Application.Features.MessageFeature.Handlers
             */
 
             var message = _mapper.Map<Message>(request.messageDto);
-            var noOperations = await _unitOfWork.ConversationRepository.Update(message);
+            var noOperations = await _unitOfWork.MessageRepository.Update(message);
             if (noOperations == 0)
             {
                 throw new Exception("Unsuccesful!");

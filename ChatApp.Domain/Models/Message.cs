@@ -9,7 +9,6 @@ namespace ChatApp.Domain.Models
 {
     public class Message: BaseEntity
     {
-        public int ConversationId { get; set; }
         public string Content { get; set; }
     }
 }

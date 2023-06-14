@@ -20,6 +20,9 @@ namespace ChatApp.Persistence
             .EnableRetryOnFailure()));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IConversationRepository, ConversationRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             return services;
         }
     }

@@ -1,6 +1,15 @@
+using ChatApp.Persistence;
+using ChatApp.Application;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureApplicationService();
+builder.Services.ConfigurePersistenceService(builder.Configuration);
+// builder.Services.AddTransient<ExceptionHandler>();
+builder.Services.AddHttpContextAccessor();
+builder.Host.UseSerilog();
 
 AddSwaggerDoc(builder.Services);
 

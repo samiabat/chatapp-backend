@@ -13,7 +13,7 @@ COPY ["ChatApp.Domain/ChatApp.Domain.csproj", "ChatApp.Domain/"]
 COPY ["ChatApp.Persistence/ChatApp.Persistence.csproj", "ChatApp.Persistence/"]
 RUN dotnet restore "./ChatApp.WebApi.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/ChatApp.WebApi"
 RUN dotnet build "ChatApp.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish

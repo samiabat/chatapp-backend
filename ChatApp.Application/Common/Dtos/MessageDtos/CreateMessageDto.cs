@@ -9,6 +9,7 @@ namespace ChatApp.Application.Common.Dtos.MessageDtos
 {
     public class CreateMessageDto
     {
+        public int ConversationId { get; set; }
         public string Content { get; set; }
     }
 }

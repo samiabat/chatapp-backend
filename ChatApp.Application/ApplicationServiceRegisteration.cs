@@ -1,11 +1,8 @@
-﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Serilog;
+using MediatR;
+using Serilog.Events;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ChatApp.Application
 {
@@ -13,6 +10,12 @@ namespace ChatApp.Application
     {
         public static IServiceCollection ConfigureApplicationService(this IServiceCollection services)
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .WriteTo.File("Log/ChatApp.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Console()
+                .CreateLogger();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             return services;

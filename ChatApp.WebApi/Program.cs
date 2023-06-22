@@ -2,12 +2,18 @@ using ChatApp.Persistence;
 using ChatApp.Application;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using ChatApp.WebApi.Middlewares;
+using ChatApp.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
+using ChatApp.WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureApplicationService();
 builder.Services.ConfigurePersistenceService(builder.Configuration);
-// builder.Services.AddTransient<ExceptionHandler>();
+builder.Services.AddTransient<ExceptionHandler>();
+builder.Services.AddAuthentication(builder.Configuration);
+builder.Services.ConfigureInfrastructureService(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Host.UseSerilog();
 
@@ -40,7 +46,9 @@ app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rideshare.WebApi v1"));
 app.UseHttpsRedirection();
 
+app.UseSerilogRequestLogging();
 app.UseAuthorization();
+app.UseMiddleware<ExceptionHandler>();
 
 app.MapControllers();
 
@@ -64,7 +72,7 @@ void AddSwaggerDoc(IServiceCollection services)
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
             Name = "Authorization",
-            Type = SecuritySchemeType.ApiKey,
+            Type = SecuritySchemeType.Http,
             Scheme = "Bearer",
             BearerFormat = "JWT",
             In = ParameterLocation.Header,

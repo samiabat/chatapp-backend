@@ -1,20 +1,15 @@
-﻿using ChatApp.Domain.Common;
+﻿using ChatApp.Domain.AuthModel;
+using ChatApp.Domain.Common;
 using ChatApp.Domain.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatApp.Persistence
 {
     public class ChatAppDbContext : DbContext
     {
 
-        public DbSet<User> User { get; set; }
+        public DbSet<ApplicationUser> User { get; set; }
         public DbSet<Message> Message { get; set; }
         public DbSet<Conversation> Conversation { get; set; }
 
@@ -28,8 +23,14 @@ namespace ChatApp.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasPostgresExtension("postgis");
             base.OnModelCreating(modelBuilder);
+            modelBuilder.HasPostgresExtension("postgis");
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(u => u.PhoneNumber)
+                .IsUnique();
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasKey(u => u.RoleId);
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChatAppDbContext).Assembly);
         }

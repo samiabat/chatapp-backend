@@ -1,13 +1,10 @@
-﻿using ChatApp.Application.Contracts.Persistence;
+﻿using ChatApp.Application.Contracts.Identity;
+using ChatApp.Application.Contracts.Persistence;
 using ChatApp.Persistence.Repositories;
+using ChatApp.Persistence.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatApp.Persistence
 {
@@ -20,9 +17,7 @@ namespace ChatApp.Persistence
             .EnableRetryOnFailure()));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IMessageRepository, MessageRepository>();
-            services.AddScoped<IConversationRepository, ConversationRepository>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

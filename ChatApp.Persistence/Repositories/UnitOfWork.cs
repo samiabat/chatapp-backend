@@ -24,7 +24,6 @@ namespace ChatApp.Persistence.Repositories
         private IMessageRepository? _messageRepository;
         private IConversationRepository? _conversationRepository;
 
-        private IUserRepository _userRepository;
         public IMessageRepository MessageRepository
         {
             get
@@ -32,15 +31,6 @@ namespace ChatApp.Persistence.Repositories
                 if (_messageRepository == null)
                     _messageRepository = new MessageRepository(_context);
                 return _messageRepository;
-            }
-        }
-        public IUserRepository UserRepository
-        {
-            get
-            {
-                if (_userRepository == null)
-                    _userRepository = new UserRepository(_context);
-                return _userRepository;
             }
         }
 

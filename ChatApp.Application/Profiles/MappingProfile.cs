@@ -8,6 +8,8 @@ using ChatApp.Application.Common.Dtos.ConversationDto;
 using ChatApp.Application.Common.Dtos.ConversationDtos;
 using ChatApp.Application.Common.Dtos.MessageDto;
 using ChatApp.Application.Common.Dtos.MessageDtos;
+using ChatApp.Application.Common.Dtos.Security;
+using ChatApp.Domain.AuthModel;
 using ChatApp.Domain.Models;
 
 namespace ChatApp.Application.Profiles
@@ -26,6 +28,16 @@ namespace ChatApp.Application.Profiles
             CreateMap<Conversation, UpdateConversationDto>().ReverseMap();
             CreateMap<Conversation, ConversationDto>().ReverseMap();
             #endregion
-        }
+
+            #region 
+            CreateMap<ApplicationRole, RoleDto>().ReverseMap();
+            CreateMap<ApplicationUser, UserCreationDto>().ReverseMap();
+            CreateMap<ApplicationUser, UserCreationDto>().ReverseMap();
+            CreateMap<ApplicationUser, UserUpdatingDto>().ReverseMap();
+            CreateMap<ApplicationUser, UserDto>().ReverseMap();
+            CreateMap<ApplicationUser, AdminUserDto>().ReverseMap();
+             CreateMap<ApplicationUser, AdminCreationDto>().ReverseMap();
+            }
+            #endregion
     }
 }

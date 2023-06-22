@@ -10,7 +10,6 @@ namespace ChatApp.Application.Contracts.Persistence
     {
         IMessageRepository MessageRepository { get; }
         IConversationRepository ConversationRepository { get; }
-        IUserRepository UserRepository { get; }
         Task<int> Save();
     }
 }

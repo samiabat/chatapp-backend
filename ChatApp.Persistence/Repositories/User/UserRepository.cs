@@ -151,7 +151,7 @@ namespace ChatApp.Persistence.Repositories.User {
                 throw new Exception("Invalid phoneNumber.");
             }
             var tokens = await _jwtService.GenerateToken(user);
-            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken);
+            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken, user.Id, user.UserName,  user.FullName, user.Email, user.ProfilePicture);
 
 
             ;
@@ -177,7 +177,7 @@ namespace ChatApp.Persistence.Repositories.User {
             }
 
             var tokens = await _jwtService.GenerateToken(user);
-            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken);
+            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken, user.Id, user.UserName, user.FullName, user.Email, user.ProfilePicture);
 
 
             ;

@@ -32,6 +32,15 @@ namespace ChatApp.WebApi.Controllers
             return getResponse(status, result);
         }
 
+
+        [HttpGet("byUserId")]
+        public async Task<IActionResult> Get([FromQuery] string SenderId, string ReceiverId)
+        {
+            var result = await _mediator.Send(new ConversationWithUserIdQuery { SenderId = SenderId, ReceiverId=ReceiverId });
+            var status = result.Success ? HttpStatusCode.OK : HttpStatusCode.NotFound;
+            return getResponse(status, result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateConversationDto conversationDto)
         {

@@ -13,6 +13,5 @@ namespace ChatApp.Application.Common.Dtos.ConversationDto
         public string ReceiverId { get; set; }
         // public User Sender { get; set; }
         // public User Receiver { get; set; }
-        public ICollection<Message>? Messages { get; set; }
     }
 }

@@ -14,8 +14,5 @@ namespace ChatApp.Domain.Models
         public ApplicationUser Sender { get; set; }
         public string ReceiverId { get; set; }
         public ApplicationUser Receiver { get; set; }
-        // public User Sender { get; set; }
-        // public User Receiver { get; set; }
-        public ICollection<Message>? Messages { get; set; }
     }
 }

@@ -18,10 +18,10 @@ namespace ChatApp.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<List<MessageDto>> MessageByConversationId(int id)
+        public async Task<List<Message>> MessageByConversationId(int ConversationId)
         {
-            return await _dbContext.Set<MessageDto>()
-                .Where(x => x.ConversationId == id)
+            return await _dbContext.Set<Message>()
+                .Where(x => x.ConversationId == ConversationId)
                 .AsNoTracking()
                 .ToListAsync();
         }

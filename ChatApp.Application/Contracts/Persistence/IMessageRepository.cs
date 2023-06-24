@@ -10,6 +10,6 @@ namespace ChatApp.Application.Contracts.Persistence
 {
     public interface IMessageRepository: IGenericRepository<Message>
     {
-        Task<List<MessageDto>> MessageByConversationId(int id);
+        Task<List<Message>> MessageByConversationId(int ConversationId);
     }
 }

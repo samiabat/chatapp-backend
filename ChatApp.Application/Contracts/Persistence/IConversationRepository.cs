@@ -9,5 +9,6 @@ namespace ChatApp.Application.Contracts.Persistence
 {
     public interface IConversationRepository: IGenericRepository<Conversation>
     {
+        Task<Conversation> ConversationByUsersId(string SenderId, string ReceiverId);
     }
 }

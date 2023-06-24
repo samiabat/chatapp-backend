@@ -29,7 +29,7 @@ namespace ChatApp.Application.Features.ConversationFeature.Handlers
             {
                 Success = true,
                 Value = _mapper.Map<List<ConversationDto>>(conversations),
-                Message = "feedback fetched succesfully.",
+                Message = "conversation fetched succesfully.",
             };
             
         }

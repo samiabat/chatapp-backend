@@ -12,29 +12,26 @@ using System.Threading.Tasks;
 
 namespace ChatApp.Application.Features.ConversationFeature.Handlers
 {
-    public class GetConversationDetailCommandHandler: IRequestHandler<GetConversationDetailQuery, BaseResponse<ConversationDto>>
+    public class ConversationWithUserIdQueryHandler: IRequestHandler<ConversationWithUserIdQuery, BaseResponse<ConversationDto>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GetConversationDetailCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public ConversationWithUserIdQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<BaseResponse<ConversationDto>> Handle(GetConversationDetailQuery request, CancellationToken cancellationToken)
+        public async Task<BaseResponse<ConversationDto>> Handle(ConversationWithUserIdQuery request, CancellationToken cancellationToken)
         {
-            var conversation = await _unitOfWork.ConversationRepository.Get(request.Id);
-
-            if (conversation == null)
+            var conversations = await _unitOfWork.ConversationRepository.ConversationByUsersId(request.SenderId, request.ReceiverId);
+            return new BaseResponse<ConversationDto>
             {
-                throw new Exception($"conversation with ID {request.Id} does not exist");
-            }
-            return new BaseResponse<ConversationDto>{
                 Success = true,
-                Value = _mapper.Map<ConversationDto>(conversation),
+                Value = _mapper.Map<ConversationDto>(conversations),
                 Message = "conversation fetched succesfully.",
             };
+
         }
     }
 }

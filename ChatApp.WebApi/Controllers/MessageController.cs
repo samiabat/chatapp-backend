@@ -23,6 +23,14 @@ namespace ChatApp.WebApi.Controllers
             return getResponse(status, result);
         }
 
+        [HttpGet("ByConversationId/{ConversationId}")]
+        public async Task<IActionResult> GetByConversationId(int ConversationId)
+        {
+            var result = await _mediator.Send(new GetMessagesByConversationId { ConversationId = ConversationId });
+            var status = result.Success ? HttpStatusCode.OK : HttpStatusCode.NotFound;
+            return getResponse(status, result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {

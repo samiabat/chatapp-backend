@@ -1,4 +1,5 @@
-﻿using ChatApp.Domain.Common;
+﻿using ChatApp.Domain.AuthModel;
+using ChatApp.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,10 @@ namespace ChatApp.Domain.Models
 {
     public class Conversation: BaseEntity
     {
-        public int SenderId { get; set; }
-        public int ReceiverId { get; set; }
+        public string SenderId { get; set; }
+        public ApplicationUser Sender { get; set; }
+        public string ReceiverId { get; set; }
+        public ApplicationUser Receiver { get; set; }
         // public User Sender { get; set; }
         // public User Receiver { get; set; }
         public ICollection<Message>? Messages { get; set; }

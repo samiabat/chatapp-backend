@@ -14,9 +14,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Dtos\Security\" />
-    <Folder Include="Features\UserFeature\Commands\" />
-    <Folder Include="Features\UserFeature\Handlers\" />
-    <Folder Include="Features\UserFeature\Queries\" />
   </ItemGroup>
 
 	<ItemGroup>

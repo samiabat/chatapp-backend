@@ -43,7 +43,7 @@ namespace ChatApp.WebApi.Controllers
             return getResponse<BaseResponse<LoginResponse>>(status, result);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Post([FromForm] UserCreationDto userCreationDto)
         {
@@ -52,8 +52,9 @@ namespace ChatApp.WebApi.Controllers
             var status = result.Success ? HttpStatusCode.Created : HttpStatusCode.BadRequest;
             return getResponse<BaseResponse<UserDto>>(status, result);
         }
+        */
 
-        [HttpPost("admin")]
+        [HttpPost("User")]
         [AllowAnonymous]
         public async Task<IActionResult> CreateUser([FromBody] AdminCreationDto userCreationDto)
         {

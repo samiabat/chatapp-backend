@@ -1,15 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-
-using System.Security.Claims;
 using ChatApp.Application.Contracts.Identity;
 using ChatApp.Domain.AuthModel;
 using ChatApp.Application.Common.Dtos.Security;
@@ -151,7 +142,7 @@ namespace ChatApp.Persistence.Repositories.User {
                 throw new Exception("Invalid phoneNumber.");
             }
             var tokens = await _jwtService.GenerateToken(user);
-            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken, user.Id, user.UserName,  user.FullName, user.Email, user.ProfilePicture);
+            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken, user.Id);
 
 
             ;
@@ -177,7 +168,7 @@ namespace ChatApp.Persistence.Repositories.User {
             }
 
             var tokens = await _jwtService.GenerateToken(user);
-            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken, user.Id, user.UserName, user.FullName, user.Email, user.ProfilePicture);
+            return new LoginResponse("Login successful", tokens.AccessToken, tokens.RefreshToken, user.Id);
 
 
             ;

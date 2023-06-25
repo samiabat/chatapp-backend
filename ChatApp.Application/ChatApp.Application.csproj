@@ -12,10 +12,6 @@
     <None Remove="Common\Dtos\ConversationDtos\CreateConversationDto.cs\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Common\Dtos\Security\" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />

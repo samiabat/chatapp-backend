@@ -85,6 +85,17 @@ namespace ChatApp.WebApi.Controllers
             return getResponse<BaseResponse<AdminUserDto>>(status, result);
         }
 
+        [HttpGet("ById/{userId}")]
+
+        public async Task<IActionResult> GetUserById(string userId)
+        {
+
+            var result = await _mediator.Send(new GetUserByIdQuery { UserId = userId });
+
+            var status = result.Success ? HttpStatusCode.OK : HttpStatusCode.NotFound;
+            return getResponse(status, result);
+        }
+
         [HttpGet("users/all")]
 
         public async Task<IActionResult> GetAllUser()

@@ -37,6 +37,7 @@ namespace ChatApp.Application.Profiles
             CreateMap<ApplicationUser, UserDto>().ReverseMap();
             CreateMap<ApplicationUser, AdminUserDto>().ReverseMap();
              CreateMap<ApplicationUser, AdminCreationDto>().ReverseMap();
+            CreateMap<ApplicationUser, UserDtailDto>().ReverseMap();
             }
             #endregion
     }

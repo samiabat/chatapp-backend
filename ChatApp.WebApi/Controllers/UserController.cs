@@ -37,9 +37,6 @@ namespace ChatApp.WebApi.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> LoginAdmin(LoginRequestByAdmin loginRequest)
         {
-            throw new Exception("Hello world");
-
-            Console.WriteLine(loginRequest.UserName, loginRequest.Password);
             var result = await _mediator.Send(new AdminLoginCommand { LoginRequest = loginRequest });
 
             var status = result.Success ? HttpStatusCode.OK : HttpStatusCode.NotFound;

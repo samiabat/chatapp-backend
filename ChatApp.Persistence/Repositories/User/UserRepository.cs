@@ -201,16 +201,15 @@ namespace ChatApp.Persistence.Repositories.User {
 
 
             var result = await _userManager.CreateAsync(user, password);
-            Console.WriteLine(result.ToString());
 
             if (result.Succeeded)
             {
 
-                var savedUser = await _userManager.FindByEmailAsync(user.Email);
+                // var savedUser = await _userManager.FindByEmailAsync(user.Email);
 
-                var addRoleResult = await _userManager.AddToRolesAsync(user, roles.Select(r => r.Name));
+                // var addRoleResult = await _userManager.AddToRolesAsync(user, roles.Select(r => r.Name));
 
-                if (!addRoleResult.Succeeded) throw new InvalidOperationException("User role assignment has failed");
+                // if (!addRoleResult.Succeeded) throw new InvalidOperationException("User role assignment has failed");
 
 
                 return user;
